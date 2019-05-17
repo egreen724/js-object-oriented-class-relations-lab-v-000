@@ -20,11 +20,9 @@ class Driver {
   }
 
   passengers() {
-    return store.passengers.filter(
-      function(passenger) {
-        return passenger.trips
-      }.bind(this)
-    );
+    return this.trips().map(trip => {
+      return trip.passenger();
+    })
   }
 }
 
@@ -43,11 +41,9 @@ class Passenger {
   }
 
   drivers() {
-    return store.drivers.filter(
-      function(driver) {
-        return driver.trips
-      }.bind(this)
-    )
+    return this.trips().map(trip => {
+      return trip.driver();
+    })
   }
 }
 
